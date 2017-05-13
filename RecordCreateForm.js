@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput} from 'react-native';
 
+import TextInputExample from './TextInputExample';
+
 export default class RecordCreateForm extends React.Component {
 	constructor(props){
 		super(props);
@@ -16,14 +18,17 @@ export default class RecordCreateForm extends React.Component {
 
 		return (
 			<View style={styles.container}>
-				<View id="step1">
-					<Text>What are you doing?</Text>
-					<TextInput
-						style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-						onChangeText={(text) => this.setState({text})}
-						value={this.state.text}
-					/>
-				</View>
+				{/*
+					 <View id="step1">
+					 <Text>What are you doing?</Text>
+					 <TextInput
+					 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+					 onChangeText={(text) => this.setState({text})}
+					 value={this.state.text}
+					 />
+					 </View>
+				*/}
+				<TextInputExample />
 			</View>
 		);
 	}
