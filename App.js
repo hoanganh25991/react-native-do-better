@@ -9,11 +9,13 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<View style={{flex: 1}}>
-				<View style={styles.container}>
-					<Text>What are you doing?</Text>
-				</View>
-				<HoiBrowser style={{flex: 1}}/>
-				<RecordCreateForm style={{flex: 1}}/>
+				{/*
+					<View style={styles.container}>
+						<Text>What are you doing?</Text>
+					</View>
+					<HoiBrowser style={{flex: 1}}/>
+				*/}
+				<RecordCreateForm />
 			</View>
 		);
 	}
@@ -27,4 +29,4 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 });
-/////
+//////////////

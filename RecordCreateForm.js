@@ -2,6 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput} from 'react-native';
 
 export default class RecordCreateForm extends React.Component {
+	constructor(props){
+		super(props);
+
+		this.state = {};
+	}
+
+
 	render() {
 
 
@@ -30,3 +37,4 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 });
+////
