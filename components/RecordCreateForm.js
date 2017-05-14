@@ -14,7 +14,10 @@ class RecordCreateForm extends React.Component {
 
 		return (
 			<View style={hoiStyle.flexColumn}>
-				<Button title="New Record" onPress={() => createNewRecord()} />
+				<View style={[hoiStyle.flexRow]}>
+					<View style={[hoiStyle.flex1]}></View>
+					<Button title="New Record" onPress={() => createNewRecord()} />
+				</View>
 				{renderIf(newRecord.step == 0)(
 					<View style={[hoiStyle.flexColumn]}>
 						<Text>What are you doing?</Text>

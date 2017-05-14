@@ -4,6 +4,7 @@ import {Text, View} from 'react-native';
 import Header from './components/Header'
 import HoiRecordCreateForm from './containers/HoiRecordCreateForm'
 import HoiRecordList from './containers/HoiRecordList'
+import HoiNotification from './containers/HoiNotification'
 
 
 import rootReducer from './reducers'
@@ -22,6 +23,7 @@ export default class App extends React.Component {
 					<Header/>
 					<HoiRecordCreateForm />
 					<HoiRecordList />
+					<HoiNotification />
 				</View>
 			</Provider>
 		)

@@ -11,9 +11,14 @@ export default class RecordList extends React.Component {
 
 		return (
 			<View style={[hoiStyle.flexColumn]}>
-				{records.map((record, index) => (
-					<Record record={record} key={index}/>
-				))}
+				<View>
+					<Text style={[hoiStyle.h1]}>Record List</Text>
+				</View>
+				<View>
+					{records.map((record, index) => (
+						<Record record={record} key={index}/>
+					))}
+				</View>
 			</View>
 		)
 	}

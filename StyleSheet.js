@@ -40,6 +40,15 @@ const hoiStyle = StyleSheet.create({
 	
 	hidden: {
 		display: 'none'
+	},
+
+	h1: {
+		fontSize: 24,
+		height: 50,
+		paddingTop: 10,
+		paddingBottom: 10,
+		paddingRight: 0,
+		paddingLeft: 0,
 	}
 })
 	
