@@ -2,7 +2,7 @@ import React from 'react';
 
 import {View, TextInput} from 'react-native';
 
-import Layout from './constants/Layout';
+import Layout from '../constants/Layout';
 
 export default class TextInputExample extends React.Component {
 	state = {

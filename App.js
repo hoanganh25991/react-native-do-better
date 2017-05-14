@@ -1,32 +1,27 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 
-import HoiBrowser from './HoiBrowser'
+import RecordCreateForm from './components/RecordCreateForm'
+import Header from './components/Header'
 
-import RecordCreateForm from './RecordCreateForm'
+import rootReducer from './reducers'
+import {Provider} from 'react-redux'
+import thunkMiddleware from 'redux-thunk';
+import {createStore, applyMiddleware} from 'redux';
+
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
 export default class App extends React.Component {
 	render() {
 		return (
-			<View style={{flex: 1}}>
-				{/*
-					<View style={styles.container}>
-						<Text>What are you doing?</Text>
-					</View>
-					<HoiBrowser style={{flex: 1}}/>
-				*/}
-				<RecordCreateForm />
-			</View>
-		);
+			<Provider store={store}>
+				<View style={{flex: 1}}>
+					<Text>What the fuck is going on</Text>
+					<Header/>
+					<RecordCreateForm />
+				</View>
+			</Provider>
+		)
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
-//////////////
