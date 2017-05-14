@@ -1,41 +1,57 @@
 import React from 'react';
 import hoiStyle from '../StyleSheet'
-import {Text, View, TextInput, Button} from 'react-native';
+import {Text, View, TextInput, Button, Slider} from 'react-native';
 
-export default class RecordCreateForm extends React.Component {
+import {renderIf} from '../utils'
+
+class RecordCreateForm extends React.Component {
 	render() {
-		const sayWhat = () => {
-			console.log('????');
-		}
+		let {newRecord} = this.props;
+
+		let {title, howGood, howBad} = newRecord;
+
+		let {createNewRecord, createTitle, createHowGood, createHowBad, thunkNextStep} = this.props;
+
 		return (
-			<View style={{display: 'flex'}}>
-				<View>
-					<Text>What are you doing?</Text>
-					<TextInput
-						keyboardAppearance="dark"
-						style={hoiStyle.input}
-					/>
-					<View style={{display: 'flex', flexDirection: 'row'}}>
-				        <Button onPress={()=>sayWhat()} title="OK"></Button>
-			      	</View>
-				</View>
+			<View style={hoiStyle.flexColumn}>
+				<Button title="New Record" onPress={() => createNewRecord()} />
+				{renderIf(newRecord.step == 0)(
+					<View style={[hoiStyle.flexColumn]}>
+						<Text>What are you doing?</Text>
+						<TextInput
+							keyboardAppearance="dark"
+							style={hoiStyle.input}
+							value={title}
+							onChangeText={value => createTitle(value)}
+						/>
+						<View style={{display: 'flex', flexDirection: 'row'}}>
+							<Button onPress={() => thunkNextStep()} title="OK"></Button>
+						</View>
+					</View>
+				)}
 
-				<View>
-					<Text>How Good</Text>
-					<TextInput
-						keyboardAppearance="dark"
-						style={hoiStyle.input}
-					/>
-				</View>
+				{renderIf(newRecord.step == 1)(
+					<View style={[hoiStyle.flexColumn]}>
+						<Text>How Good {Math.floor(howGood * 10)}</Text>
+						<Slider value={howGood} onValueChange={value => createHowGood(value)}/>
+						<View style={{display: 'flex', flexDirection: 'row'}}>
+							<Button onPress={() => thunkNextStep()} title="OK"></Button>
+						</View>
+					</View>
+				)}
 
-				<View>
-					<Text>How Bad</Text>
-					<TextInput
-						keyboardAppearance="dark"
-						style={hoiStyle.input}
-					/>
-				</View>
+				{renderIf(newRecord.step == 2)(
+					<View style={[hoiStyle.flexColumn]}>
+						<Text>How Bad {Math.floor(howBad * 10)}</Text>
+						<Slider value={howBad} onValueChange={value => createHowBad(value)}/>
+						<View style={{display: 'flex', flexDirection: 'row'}}>
+							<Button onPress={() => thunkNextStep()} title="OK"></Button>
+						</View>
+					</View>
+				)}
 			</View>
 		);
 	}
 }
+
+export default RecordCreateForm

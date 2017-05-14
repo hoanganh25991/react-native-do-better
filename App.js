@@ -1,8 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-import RecordCreateForm from './components/RecordCreateForm'
 import Header from './components/Header'
+import HoiRecordCreateForm from './containers/HoiRecordCreateForm'
+import HoiRecordList from './containers/HoiRecordList'
+
 
 import rootReducer from './reducers'
 import {Provider} from 'react-redux'
@@ -17,9 +19,9 @@ export default class App extends React.Component {
 		return (
 			<Provider store={store}>
 				<View style={{flex: 1}}>
-					<Text>What the fuck is going on</Text>
 					<Header/>
-					<RecordCreateForm />
+					<HoiRecordCreateForm />
+					<HoiRecordList />
 				</View>
 			</Provider>
 		)

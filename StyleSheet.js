@@ -16,12 +16,30 @@ const hoiStyle = StyleSheet.create({
 		// borderColor: '#eee',
 		fontSize: 35,
 		padding: 5,
-		height: 40,
+		height: 50,
 	},
 	
 	borderDefault: {
 		borderStyle: 'solid',
 		borderColor: 'black',
+	},
+	
+	flexRow: {
+		display: 'flex',
+		flexDirection: 'row'
+	},
+
+	flexColumn: {
+		display: 'flex',
+		flexDirection: 'column'
+	},
+	
+	flex1: {
+		flex: 1,
+	},
+	
+	hidden: {
+		display: 'none'
 	}
 })
 	

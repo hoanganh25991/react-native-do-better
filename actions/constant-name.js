@@ -1,4 +1,7 @@
-export const CREATE_TITLE    = 'CREATE_TITLE'
-export const CREATE_HOW_GOOD = 'CREATE_HOW_GOOD'
-export const CREATE_HOW_BAD  = 'CREATE_HOW_BAD'
-
+export const CREATE_TITLE      = 'CREATE_TITLE'
+export const CREATE_HOW_GOOD   = 'CREATE_HOW_GOOD'
+export const CREATE_HOW_BAD    = 'CREATE_HOW_BAD'
+export const NEXT_STEP         = 'NEXT_STEP'
+export const CREATE_NEW_RECORD = 'CREATE_NEW_RECORD'
+export const ADD_NEW_RECORD    = 'ADD_NEW_RECORD'
+export const CLEAR_NEW_RECORD  = 'CLEAR_NEW_RECORD'
