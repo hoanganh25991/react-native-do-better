@@ -24,6 +24,8 @@ export default class App extends React.Component {
 					<HoiRecordCreateForm />
 					<HoiRecordList />
 					<HoiNotification />
+					<Text>Hello world</Text>
+					<Text>Hello world again!</Text>
 				</View>
 			</Provider>
 		)

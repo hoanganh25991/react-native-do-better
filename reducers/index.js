@@ -10,6 +10,15 @@ const demoState = {
 	},
 	
 	records: [],
+	schedule: {
+		Monday:    [],
+		Tuesday:   [],
+		Wednesday: [],
+		Thursday:  [],
+		Friday:    [],
+		Saturday:  [],
+		Sunday:    [],
+	}
 };
 
 

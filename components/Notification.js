@@ -14,6 +14,9 @@ export default class Notification extends React.Component {
 				<Button onPress={this._presentLocalNotification} title='Present a notification immediately'></Button>
 				<View style={{ height: 10 }} />
 				<Button onPress={this._scheduleLocalNotification} title='Schedule notification for 10 seconds from now'></Button>
+				<Text>Schedule notification</Text>
+				<Text>Damn cool</Text>
+				<Text>Hello world</Text>
 			</View>
 		);
 	}
