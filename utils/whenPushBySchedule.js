@@ -1,4 +1,5 @@
-import * as moment from 'moment';
+//import * as moment from 'moment';
+const moment = require('moment')
 
 /**
  * Find when should push notification
