@@ -24,10 +24,6 @@ const demoState = {
 
 
 const rootReducer = (state = demoState, action) => {
-	console.log('previous state', state);
-
-	console.log('action', action);
-
 	switch(action.type){
 		case c.CREATE_NEW_RECORD:{
 			let {newRecord: currentRecord} = state;
@@ -110,11 +106,14 @@ const rootReducer = (state = demoState, action) => {
 			
 			return Object.assign({}, state, {scheduleTimeout});
 		}
+		case c.UPDATE_SCHEDULE:{
+			let {schedule} = action;
+			
+			return Object.assign({}, state, {schedule})
+		}
 		default:
 			return state;
 	}
-
-	console.log('next state', '???');
 }
 
 export default rootReducer

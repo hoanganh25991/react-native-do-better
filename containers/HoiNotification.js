@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import {actionSchedulePushNotification, actionReRunSchedulePushNotification} from '../actions'
+import {actionSchedulePushNotification, actionReRunSchedulePushNotification, actionDebugPushNotification} from '../actions'
 
 import Notification from '../components/Notification'
 
@@ -9,7 +9,8 @@ const mapStateToProps  = ({records}) => ({records})
 const mapActionToProps = (dispatch) => {
 	return {
 		schedulePushNotification:      () => dispatch(actionSchedulePushNotification()),
-		reRunSchedulePushNotification: () => dispatch(actionReRunSchedulePushNotification())
+		reRunSchedulePushNotification: () => dispatch(actionReRunSchedulePushNotification()),
+		debugPushNotification:         () => dispatch(actionDebugPushNotification()),
 	}
 }
 

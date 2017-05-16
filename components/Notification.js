@@ -13,13 +13,16 @@ export default class Notification extends React.Component {
 
 	render() {
 
-		let {reRunSchedulePushNotification} = this.props
+		let {reRunSchedulePushNotification, debugPushNotification} = this.props
 
 		return (
 			<View style={[hoiStyle.flexRow]}>
-				<Button title='Rerun schedule push notification'
-				        onPress={() => reRunSchedulePushNotification()}
-				></Button>
+				<View style={[hoiStyle.flexColumn, hoiStyle.bgGray, hoiStyle.flex1]}>
+					<Text>Add new schedule few minutes later. Press 'Debug' to test</Text>
+					<Button title="Debug"
+					        onPress={() => debugPushNotification()}
+					></Button>
+				</View>
 			</View>
 		);
 	}

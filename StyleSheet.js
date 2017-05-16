@@ -49,6 +49,10 @@ const hoiStyle = StyleSheet.create({
 		paddingBottom: 10,
 		paddingRight: 0,
 		paddingLeft: 0,
+	},
+	
+	bgGray: {
+		backgroundColor: '#eee'
 	}
 })
 	

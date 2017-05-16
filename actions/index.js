@@ -1,6 +1,7 @@
 import * as c from './constant-name'
 import {whenPushBySchedule} from '../utils'
 import {Notifications} from 'expo'
+const moment = require('moment')
 
 
 export const actionCreateTitle = (title) => {
@@ -171,5 +172,54 @@ export const actionReRunSchedulePushNotification = () => {
 		
 		// Run schedule push notification
 		dispatch(actionSchedulePushNotification())
+	}
+}
+
+export const actionUpdateSchedule = (schedule) => {
+	return {
+		type: c.UPDATE_SCHEDULE,
+		schedule
+	}
+}
+
+/**
+ * This function update schedule
+ * By create add new one 1 minutes later from now
+ * @returns {function()}
+ */
+export const actionDebugPushNotification = () => {
+	return (dispatch, getState) => {
+		let {schedule: currentSchedule} = getState();
+		// New schedule
+		// Clone it from currentSchedule
+		// Please dont modify on current state
+		// Damn dangerous
+		let schedule = Object.assign({}, currentSchedule);
+
+		let now = moment();
+
+		let dayOfWeek = now.format('dddd');
+
+		let timeList;
+		// timeList is a different arr, we try to update
+		// Please be carefull, on modify state
+		if(schedule[dayOfWeek]){
+			timeList = [...schedule[dayOfWeek]];
+		}else{
+			timeList = [];
+		}
+
+		let twoMinutesLater = now.clone().add(1, 'minutes');
+		
+		// Ok add the new one
+		timeList.push(twoMinutesLater.format('HH:mm'));
+		
+		// Update schedule
+		schedule[dayOfWeek] = timeList;
+		
+		dispatch(actionUpdateSchedule(schedule));
+
+		dispatch(actionReRunSchedulePushNotification())
+
 	}
 }
