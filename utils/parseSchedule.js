@@ -1,5 +1,7 @@
-const moment = require( 'moment');
+import * as moment from 'moment';
+
 /**
+ * Find when should push notification
  * @param schedule has shape as below
  * schedule: {
 	Monday:    [],
@@ -11,61 +13,38 @@ const moment = require( 'moment');
 	Sunday:    [],
  }
  */
-
-
-const xyz = schedule => {
+export default schedule => {
 	let now = moment();
 
-
-
-
-	let found = false;
-	let count = 0;
+	let found     = false;
+	let nextDay   = now.clone();
+	let maxTryDay = now.clone().add(7, 'days');
 
 	let whenPush;
 
-	let nextDay = now;
+	while(!found && nextDay.isBefore(maxTryDay)) {
 
-	while(!found && count < 7){
 		let dayOfWeek = nextDay.format('dddd');
+		let timeList  = schedule[dayOfWeek];
 
-		let timeList = schedule[dayOfWeek];
+		if(timeList && timeList.length > 0) {
+			let dayTimeObj = timeList.map(timeVal => moment(`${dayOfWeek} ${timeVal}`, 'dddd HH:mm'));
+			let foundTime  = dayTimeObj.filter(dayTimeObj => dayTimeObj.isAfter(now));
 
-		if(timeList && timeList.length > 0){
-			let time = timeList.filter(timeVal => {
-				let timeValObj = moment(`${dayOfWeek} ${timeVal}`, 'dddd HH:mm');
-
-				//compare timeValObj with current
-				return timeValObj.isAfter(nextDay);
-			});
-
-			if(time.length > 0){
+			if(foundTime.length > 0) {
 				found = true;
-				whenPush = time[0];
+				whenPush = foundTime[0];
 			}
 		}
 
-		// still not find out
-		// try with next one
-		nextDay = now.clone().add(1, 'days');
-		count++;
+		// Try on next one
+		nextDay.add(1, 'days');
 	}
 
-	if(!whenPush){
+	if(!whenPush) {
 		// consider as push now
 		// should do nothing
 	}
+
+	return whenPush;
 }
-
-
-let schedule =  {
-	// Monday:    ['8:30', '10:20', '14:40', '16:30', '20:20'],
-	// Tuesday:   ['8:30', '10:20', '14:40', '16:30', '20:20'],
-	// Wednesday: ['8:30', '10:20', '14:40', '16:30', '20:20'],
-	Thursday:  ['8:30', '10:20', '14:40', '16:30', '20:20'],
-	Friday:    ['8:30', '10:20', '14:40', '16:30', '20:20'],
-	Saturday:  ['8:30', '10:20', '14:40', '16:30', '20:20'],
-	Sunday:    ['8:30', '10:20', '14:40', '16:30', '20:20'],
-};
-
-xyz(schedule);
