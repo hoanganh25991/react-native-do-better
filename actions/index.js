@@ -109,6 +109,8 @@ export const actionSchedulePushNotification = () => {
 			let whenPush   = whenPushBySchedule(schedule);
 
 			if(whenPush){
+				console.log(whenPush, whenPush.format('HH:mm'))
+				
 				let scheduleTimeout = setTimeout(() => {
 					
 					dispatch(actionPushNotification())
@@ -144,7 +146,7 @@ export const actionSchedulePushNotification = () => {
 	}
 }
 
-export const actionCheckToCkearScheduleTimeout = () => {
+export const actionCheckToClearScheduleTimeout = () => {
 	return {
 		type: c.CHECK_TO_CLEAR_SCHEDULE_TIMEOUT
 	}
@@ -162,7 +164,7 @@ export const actionReRunSchedulePushNotification = () => {
 		// After it cleaned, self loop not invoke again
 		let {scheduleTimeout} = getState();
 		
-		dispatch(actionCheckToCkearScheduleTimeout())
+		dispatch(actionCheckToClearScheduleTimeout())
 		
 		if(scheduleTimeout){
 			clearTimeout(scheduleTimeout);

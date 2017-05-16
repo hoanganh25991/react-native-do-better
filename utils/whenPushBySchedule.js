@@ -30,6 +30,20 @@ export default schedule => {
 
 		if(timeList && timeList.length > 0) {
 			let dayTimeObj = timeList.map(timeVal => moment(`${dayOfWeek} ${timeVal}`, 'dddd HH:mm'));
+			// Sort dayTimeObj before pop out
+			// Which most near current
+			dayTimeObj.sort((timeObjA, timeObjB) => {
+				if(timeObjA.isBefore(timeObjB)){
+					return -1;
+				}
+
+				if(timeObjA.isSame(timeObjB)){
+					return 0;
+				}
+
+				return 1;
+			});
+
 			let foundTime  = dayTimeObj.filter(dayTimeObj => dayTimeObj.isAfter(now));
 
 			if(foundTime.length > 0) {
