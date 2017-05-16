@@ -7,6 +7,8 @@ const demoState = {
 		howBad: null,
 		step: null,
 		totalStep: 3,
+		createdTimestamp: null,
+		scheduledTimestamp: null,
 	},
 	
 	records: [],
@@ -26,9 +28,15 @@ const demoState = {
 const rootReducer = (state = demoState, action) => {
 	switch(action.type){
 		case c.CREATE_NEW_RECORD:{
-			let {newRecord: currentRecord} = state;
-
-			let newRecord = Object.assign({}, currentRecord, {step: 0});
+			let newRecord = {
+				title: null,
+				howGood: null,
+				howBad: null,
+				step: 0,
+				totalStep: 3,
+				createdTimestamp: null,
+				scheduledTimestamp: null,
+			};
 
 			return Object.assign({}, state, {newRecord});
 		}

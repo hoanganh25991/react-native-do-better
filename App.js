@@ -11,11 +11,11 @@ import HoiNotification from './containers/HoiNotification'
 import rootReducer from './reducers'
 import {Provider} from 'react-redux'
 import thunkMiddleware from 'redux-thunk';
-import loggerMiddleware from 'redux-logger';
+// import loggerMiddleware from 'redux-logger';
 import {createStore, applyMiddleware} from 'redux';
 
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, loggerMiddleware))
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
 export default class App extends React.Component {
 	render() {
