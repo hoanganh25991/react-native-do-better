@@ -109,8 +109,10 @@ export const actionSchedulePushNotification = () => {
 			let whenPush   = whenPushBySchedule(schedule);
 
 			if(whenPush){
-				console.log(whenPush, whenPush.format('HH:mm'))
-				
+				console.log('whenPush', whenPush.format('HH:mm'))
+
+				let waitFor = whenPush.format('x') - moment().format('x')
+
 				let scheduleTimeout = setTimeout(() => {
 					
 					dispatch(actionPushNotification())
@@ -134,7 +136,7 @@ export const actionSchedulePushNotification = () => {
 					// Loop schedule next time
 					scheduleLoop();
 
-				}, Number(whenPush.format('x')));
+				}, waitFor);
 
 				dispatch(actionUpdateScheduleTimeout(scheduleTimeout))
 			}
